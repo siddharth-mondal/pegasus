@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import List from './List';
+
+const API_URL = 'https://jsonplaceholder.typicode.com/todos/3';
 
 function App() {
+  const [details, setDetails] = useState([]);
+
+  useEffect(async () => {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    const [items] = data;
+    setDetails(items);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App-header">React Pegasus</div>;<List details={details}></List>
+    </>
   );
 }
 
