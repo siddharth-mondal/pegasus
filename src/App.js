@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import List from './List';
+// import List from './List';
+import axios from 'axios';
 
-const API_URL = 'https://jsonplaceholder.typicode.com/todos/3';
+const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
 function App() {
-  const [details, setDetails] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  useEffect(async () => {
-    const response = await fetch(API_URL);
-    const data = await response.json();
-    const [items] = data;
-    setDetails(items);
+  useEffect(() => {
+    axios.get(API_URL).then(res => {
+      setPosts(res.data);
+    });
   }, []);
 
   return (
     <>
-      <div className="App-header">React Pegasus</div>;<List details={details}></List>
+      <div className="App-header">React Pegasus</div>
+      {posts.map(post => (
+        <div key={post.id} className="Cards">
+          {post.name}
+        </div>
+      ))}
     </>
   );
 }

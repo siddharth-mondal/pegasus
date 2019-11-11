@@ -12,3 +12,13 @@
   font-size: calc(10px + 5vmin);
   color: white;
 }
+
+.Cards {
+  display: inline-block;
+  width: 12em;
+  height: 5em;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 20px;
+  text-align: center;
+}

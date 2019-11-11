@@ -1,9 +1,9 @@
 import React from 'react';
 
-function List(details) {
+function List(props) {
   return (
     <>
-      <h2>{details.dummy}</h2>
+      <h2>{props.title}</h2>
     </>
   );
 }
