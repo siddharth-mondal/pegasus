@@ -1,11 +1,7 @@
 import React from 'react';
 
-function List(props) {
-  return (
-    <>
-      <h2>{props.title}</h2>
-    </>
-  );
-}
+const List = ({ todo }) => {
+  return <h3>{todo.completed}</h3>;
+};
 
 export default List;
